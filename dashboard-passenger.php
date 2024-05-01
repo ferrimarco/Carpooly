@@ -73,17 +73,13 @@
                 <div id="date-date" class="date">
                     <div class="content-btn-date">
                         <i class="fa-solid fa-calendar-days"></i>
-                        <span style="width: 100px;" class="date-txt" id="date" name="date">
-                            Oggi
-                        </span>
+                        <input style="width: 100px;" class="date-txt" id="date" name="date" placeholder="Oggi">
                     </div>
                 </div>
                 <div id="passenger-passenger" class="passenger">
                     <div class="content-btn-passenger">
                         <i class="fa-regular fa-user"></i>
-                        <span style="width: 100px;" class="passenger-txt" id="passenger" name="passenger">
-                            Passeggeri
-                        </span>
+                        <input style="width: 100px;" class="passenger-txt" id="passenger" name="passenger" placeholder="Passegero">
                     </div>
                 </div>
                 <div class="search">
