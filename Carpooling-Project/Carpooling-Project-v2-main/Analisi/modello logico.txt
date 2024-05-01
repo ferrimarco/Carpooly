@@ -1,0 +1,21 @@
+UTENTE(id_utente[PK],nome, cognome, data_n, luogo_n, email, password, cf)
+
+AUTISTA(id_autista[PK], nome, cognome, n_patente, s_patente, data_emissione, cf, id_utente[FK]) 
+
+VIAGGIO(id_viaggio[PK], città_p, città_d, data_p, data_d, costo, tempo, stato, id_autista[FK])
+
+FEEDBACK(id_feedback[PK], voto, commento)
+
+ASSEGNA(id_utente[PK][FK], id_feedback[PK][FK])
+
+RICEVE(id_autista[PK][FK], id_feedback[PK][FK])
+
+AUTOMOBILE(targa[PK], marca, modello, anno, colore, id_autista[FK])
+
+CARTA_DI_CREDITO(n_carta[PK], data_scadenza, cvv, nome, tipo, id_utente[FK])
+
+PRENOTAZIONE(id_prenotazione[PK], data, ora, stato)
+
+EFFETTUA(id_utente[PK][FK], id_prenotazione[PK][FK])
+
+PUO'_AVERE(id_autista[PK][FK], id_prenotazione[PK][FK])

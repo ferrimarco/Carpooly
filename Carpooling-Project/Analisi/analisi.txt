@@ -1,0 +1,11 @@
+Il progetto di car pooling consente agli utenti di registrarsi sulla piattaforma, fornendo informazioni personali come nome, cognome, documento di identità, recapito telefonico ed email. 
+Durante il processo di registrazione o in qualsiasi momento successivo, gli utenti possono decidere se agire come autisti o come passeggeri.
+Gli utenti interessati a offrire passaggi possono selezionare l'opzione "Become a driver", attraverso la quale possono diventare autisti sulla piattaforma. 
+Questo processo richiede la fornitura di ulteriori informazioni, come dettagli sulla patente di guida e sull'automobile utilizzata.
+Una volta registrati come autisti, gli utenti hanno la possibilità di creare viaggi specificando dettagli come città di partenza, città di destinazione, data e ora di partenza, contributo economico richiesto per ogni passeggero e tempi di percorrenza stimati. 
+I viaggi creati dagli autisti sono resi disponibili sulla piattaforma per i passeggeri interessati.
+D'altra parte, i passeggeri possono cercare viaggi disponibili inserendo i dettagli del loro percorso desiderato e della data di viaggio. 
+Una volta trovato un viaggio adatto, i passeggeri possono prenotarlo direttamente attraverso la piattaforma.
+Gli autisti hanno il controllo completo sulle prenotazioni e possono accettare o rifiutare le richieste di viaggio in base alla loro disponibilità e preferenze. 
+Dopo ogni viaggio, sia gli autisti che i passeggeri possono lasciare feedback e valutazioni reciproche, contribuendo così a creare una comunità di car pooling sicura e affidabile.
+La piattaforma invia notifiche via email agli utenti riguardanti le prenotazioni effettuate, l'accettazione o il rifiuto delle prenotazioni e i feedback ricevuti, garantendo così un'efficace comunicazione tra gli utenti.
