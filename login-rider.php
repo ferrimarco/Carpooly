@@ -10,25 +10,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = $conn->query($sql);
 
     if ($result->num_rows == 1) {
-        // Ottieni il nome dell'autista
-        $getNameQuery = "SELECT name FROM autisti WHERE email='$email'";
-        $resultName = $conn->query($getNameQuery);
-
-        if ($resultName->num_rows == 1) {
-            $row = $resultName->fetch_assoc();
-            $userName = $row['name'];
+        // Ottieni l'ID e il nome dell'autista
+        $row = $result->fetch_assoc();
+        $id_autista = $row['id'];
+        $userName = $row['name'];
         
-            // Imposta l'email nella sessione
-            $_SESSION['email'] = $email;
+        // Imposta l'email e l'ID dell'autista nella sessione
+        $_SESSION['email'] = $email;
+        $_SESSION['id_autista'] = $id_autista;
         
-            // Redirect alla dashboard dell'autista con il nome utente corretto
-            header("Location: dashboard-autisti.php?name=$userName");
-            exit;
-        } else {
-            echo "<script>alert('Errore nel recupero del nome autista');</script>";
-            exit;
-        }
-        
+        // Redirect alla dashboard dell'autista con il nome utente e l'ID corretti nell'URL
+        header("Location: dashboard-autisti.php?name=$userName&id=$id_autista");
+        exit;
     } else {
         echo "<script>alert('Credenziali errate. Riprova.');</script>";
         exit;

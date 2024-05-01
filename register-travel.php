@@ -1,30 +1,35 @@
 <?php
-// Includi il file per la connessione al database
+session_start();
 include_once 'db.php';
 
-// Verifica se il form è stato inviato
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Recupera i dati dai campi del form
-    $departure_city = $_POST["departure_city"];
-    $destination_city = $_POST["destination_city"];
-    $travel_date = $_POST["travel_date"];
-    $passengers = $_POST["passengers"];
-    $car_model = $_POST["car_model"];
-    $license_plate = $_POST["license_plate"];
-    $car_color = $_POST["car_color"];
-    $car_year = $_POST["car_year"];
-    $total_seats = $_POST["total_seats"];
-    $available_seats = $_POST["available_seats"];
+    // Recupera l'ID dell'autista dalla sessione
+    $id_autista = $_SESSION['id_autista'];
 
-    // Prepara e esegui la query SQL per l'inserimento dei dati del viaggio nella tabella "viaggi"
-    $sql = "INSERT INTO viaggi (partenza, destinazione, data_viaggio, ora_partenza, numero_posti)
-            VALUES ('$departure_city', '$destination_city', '$travel_date', $passengers,$total_seats, $available_seats)";
+    // Recupera i dati del viaggio dalla richiesta POST
+    $partenza = $_POST["departure_city"];
+    $destinazione = $_POST["destination_city"];
+    $data = $_POST["travel_date"];
+    $nPasseggeri = $_POST["passengers"];
+    $modello = $_POST["car_model"];
+    $targa = $_POST["license_plate"];
+    $colore = $_POST["car_color"];
+    $anno = $_POST["car_year"];
+    $nPostiTotali = $_POST["total_seats"];
+    $nPostiDisponibili = $_POST["available_seats"];
+
+    // Costruisci e esegui la query per inserire i dati del viaggio nel database
+    $sql = "INSERT INTO viaggi (id_autista, partenza, destinazione, data_viaggio, nPasseggeri, modello, targa, colore, anno, nPostitotale, nPostiDisponibili)
+            VALUES ('$id_autista', '$partenza', '$destinazione', '$data', '$nPasseggeri', '$modello', '$targa', '$colore', '$anno', '$nPostiTotali', '$nPostiDisponibili')";
 
     if ($conn->query($sql) === TRUE) {
+        // Inserimento del viaggio avvenuto con successo
         echo "<script>alert('Il viaggio è stato pubblicato con successo!')</script>";
-        header("Location: dashboard-passenger.php");
+        header("Location: sign.html");
+        exit;
     } else {
-        echo "Errore durante la pubblicazione del viaggio: " . $conn->error;
+        // Si è verificato un errore durante l'esecuzione della query SQL
+        echo "Errore durante l'inserimento del viaggio: " . $conn->error;
     }
 }
 ?>

@@ -31,7 +31,7 @@
     <section class="content">
     <div class="container">
         <div class="registration-section">
-            <form action="register-travel.php" method="post">
+            <form action="./register-travel.php" method="post">
                 <div class="slide active" id="slide1">
                     <h2>Registrazione del Viaggio - Informazioni di Viaggio</h2>
                     <div class="form-group">
@@ -102,10 +102,10 @@
                     <div class="BtnGroup">
                         <button style="float: left;" type="button" class="previous-button">Indietro</button>
                         <button type="button" class="submit-button">Visualizza Il Riepilogo</button>
+                        <button type="submit">Pubblica</button>
                     </div>
                 </div>
             </form>
-            <button style="float: right;" type="submit" class="push-travel">Pubblica il Viaggio</button>
         </div>
         <div id="map"></div>
     </div>
