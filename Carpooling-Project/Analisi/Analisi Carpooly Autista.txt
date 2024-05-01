@@ -1,3 +1,0 @@
-Registrazione autista, chiederà la mail, nome, cognome, numero patente, scadenza patente, data emissione patente (dati patemnte tutti in una scheda) e password;
-
-registrazione macchina avrà un form di inserimento dei dati della macchina (marca, modello, anno di immatricolazione, colore, targa, posti disponibili);
