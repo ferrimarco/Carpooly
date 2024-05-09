@@ -36,7 +36,7 @@ function trovaCittaPerIniziale(iniziale) {
         "Pisa", "Pistoia", "Pordenone", "Potenza", "Prato",
         "Ragusa", "Ravenna", "Reggio Calabria", "Reggio Emilia", "Rieti", "Rimini", "Roma",
         "Rovigo",
-        "Salerno", "Sassari", "Savona", "Siena", "Siracusa", "Sondrio", "Taranto", "Teramo",
+        "Salerno", "Sassari", "Savona", "Siena", "Siracusa", "Sondrio", "Taranto", "Teramo", "Sassuolo",
         "Terni", "Torino", "Trapani", "Trento", "Treviso", "Trieste",
         "Udine",
         "Varese", "Venezia", "Verbania", "Vercelli", "Verona", "Vibo Valentia", "Vicenza", "Viterbo"
@@ -94,16 +94,6 @@ function eseguiProgramma() {
             pass.style.display = "none"
         }
     })
-
-    document.getElementById("AprilBtn").addEventListener("click", function() {
-        document.getElementById("Aprile").style.display = "none";
-        document.getElementById("Maggio").style.display = "block";
-    });
-
-    document.getElementById("MayBtn").addEventListener("click", function() {
-        document.getElementById("Aprile").style.display = "block";
-        document.getElementById("Maggio").style.display = "none";
-    });
 
     document.getElementById("MayToJuneBtn").addEventListener("click", function() {
         document.getElementById("Maggio").style.display = "none";
@@ -163,7 +153,7 @@ function getSelectedDate(selectedDay, currentMonth) {
 }
 
 function updateSelectedDate(selectedDate) {
-    document.getElementById("date").innerText = selectedDate;
+    document.getElementById("date").value = selectedDate;
 }
 
 let dateButtons = document.getElementsByName("day");
@@ -193,22 +183,17 @@ for (let i = 0; i < dateButtons.length; i++) {
     });
 }
 
-// Ottieni il riferimento ai pulsanti di aggiunta e sottrazione dei passeggeri
 const addButton = document.querySelector('.add-btn');
 const lessButton = document.querySelector('.less-btn');
-
-// Ottieni il riferimento allo span che mostra il numero dei passeggeri
 const passengerCount = document.querySelector('.add-number-content span');
-
-// Ottieni il riferimento al div che contiene il nome dei passeggeri
 const passengerName = document.getElementById('passenger');
 
 let numPassengers = 1;
 
 function updatePassengerCount() {
     passengerCount.innerText = numPassengers;
-    passengerName.innerText = `${numPassengers} ${numPassengers === 1 ? 'Passeggero' : 'Passeggeri'}`;
-    // Cambia il testo all'interno del div content-txt-passenger
+    passengerName.value = numPassengers;
+
     const passengerText = document.querySelector('.content-txt-passenger');
     passengerText.innerText = ` ${numPassengers === 1 ? 'Passeggero' : 'Passeggeri'}`;
 }

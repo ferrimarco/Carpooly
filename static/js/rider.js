@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function() {
         document.getElementById("departure_city").textContent = document.getElementById("departure_city_input").value;
         document.getElementById("destination_city").textContent = document.getElementById("destination_city_input").value;
         document.getElementById("travel_date").textContent = document.getElementById("travel_date_input").value;
-        document.getElementById("passengers").textContent = document.getElementById("passengers_input").value;
+        document.getElementById("costo_viaggio").textContent = document.getElementById("costo").value;
         document.getElementById("car_model_summary").textContent = document.getElementById("car_model_input").value;
         document.getElementById("license_plate_summary").textContent = document.getElementById("license_plate_input").value;
         document.getElementById("car_color_summary").textContent = document.getElementById("car_color_input").value;

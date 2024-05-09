@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 01, 2024 alle 13:32
+-- Creato il: Mag 09, 2024 alle 22:08
 -- Versione del server: 10.4.32-MariaDB
 -- Versione PHP: 8.0.30
 
@@ -54,6 +54,9 @@ CREATE TABLE `autisti` (
 --
 -- Dump dei dati per la tabella `autisti`
 --
+
+INSERT INTO `autisti` (`id`, `email`, `password`, `name`, `surname`, `birthdate`, `gender`, `N_Patente`, `E_Patente`, `S_Patente`) VALUES
+(1, 'franco@autista.it', 'autista01', 'Franco', 'Calabrese', '1950-01-15', 'male', 'ABCD123456', '2024-01-15', '2034-01-14');
 
 -- --------------------------------------------------------
 
@@ -144,6 +147,9 @@ CREATE TABLE `users` (
 -- Dump dei dati per la tabella `users`
 --
 
+INSERT INTO `users` (`id`, `email`, `password`, `name`, `surname`, `birthdate`, `gender`, `created_at`) VALUES
+(1, 'marco@panetti.it', 'marcoferri', 'Marco', 'Ferri', '2005-06-06', 'male', '2024-04-30 22:01:01');
+
 -- --------------------------------------------------------
 
 --
@@ -156,15 +162,29 @@ CREATE TABLE `viaggi` (
   `partenza` varchar(255) NOT NULL,
   `destinazione` varchar(255) NOT NULL,
   `data_viaggio` date NOT NULL,
-  `nPasseggeri` int(11) NOT NULL,
+  `costo_viaggio` int(11) NOT NULL,
   `modello` varchar(255) NOT NULL,
   `targa` text NOT NULL,
   `colore` varchar(255) NOT NULL,
-  `anno` date NOT NULL,
+  `anno` text NOT NULL,
   `nPostitotale` int(11) NOT NULL,
   `nPostiDisponibili` int(11) NOT NULL,
   `creato_il` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `viaggi`
+--
+
+INSERT INTO `viaggi` (`id`, `id_autista`, `partenza`, `destinazione`, `data_viaggio`, `costo_viaggio`, `modello`, `targa`, `colore`, `anno`, `nPostitotale`, `nPostiDisponibili`, `creato_il`) VALUES
+(12, 1, 'Bari', 'Roma', '2024-05-20', 20, 'ferrari', 'AB12SD', 'rosso', '2024', 6, 6, '2024-05-09 18:09:30'),
+(13, 1, 'Bari', 'Napoli', '2024-05-20', 15, 'mercedes', 'JH376GS', 'nera', '2024', 2, 1, '2024-05-09 18:12:09'),
+(14, 1, 'Bari', 'Catania', '2024-10-10', 40, 'Alfa Romeo', 'BD43H62', 'blu', '2020', 5, 4, '2024-05-09 18:15:54'),
+(15, 1, 'Bari', 'Milano', '2024-06-06', 45, 'Aston Martin', 'BD345PO', 'celeste', '2023', 5, 4, '2024-05-09 18:17:41'),
+(16, 1, 'Bari', 'Torino', '2024-07-12', 50, 'Audi', 'FD537HD', 'nero', '2020', 5, 4, '2024-05-09 18:18:45'),
+(17, 1, 'Bari', 'Genova', '2024-12-20', 45, 'BMW', 'GH547KE', 'bianca', '2020', 5, 4, '2024-05-09 18:20:17'),
+(18, 1, 'Bari', 'Sassuolo', '2024-05-12', 43, 'ferrari', 'DB671DU', 'nero', '2020', 2, 1, '2024-05-09 18:21:17'),
+(19, 1, 'Bari', 'Lecce', '2024-05-19', 13, 'Fiat', 'DB915BE', 'grigia', '2021', 5, 4, '2024-05-09 18:24:26');
 
 --
 -- Indici per le tabelle scaricate
@@ -270,7 +290,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT per la tabella `viaggi`
 --
 ALTER TABLE `viaggi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- Limiti per le tabelle scaricate
