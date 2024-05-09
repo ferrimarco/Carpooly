@@ -11,6 +11,7 @@
     <title>Dashboard Passeggero</title>
     <link rel="stylesheet" href="./static/css/dashboard-passenger.css">
     <script src="https://kit.fontawesome.com/af6ecfa2ff.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css"/>
 </head>
 <body>
     <header>
@@ -1266,9 +1267,28 @@
             </div>
         </div>
         
+    <div class="ride container">
+        <div id="map"></div>
+        <div class="rideInformation-div">
+            <i class="fa-solid fa-plane-departure"></i>
+            <h2 class="city-start-name">Milano</h2>
+        </div>
+        <div class="rideInformation-div">
+            <i class="fa-solid fa-plane-arrival"></i>
+            <h2 class="city-finish-name">Bari</h2>
+        </div>
+        <div class="rideInformation-div">
+            <i class="fa-solid fa-calendar-days"></i>
+            <h2 class="ride-day">12/02/24</h2>
+        </div>
+        
+    </div>
         
     </section>
 
     <script src="./static/js/dashboard-passenger.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" />
+    <script src="./static/js/script.js"></script>   
 </body>
 </html>
