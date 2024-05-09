@@ -47,8 +47,8 @@
                         <input type="date" id="travel_date_input" name="travel_date" required>
                     </div>
                     <div class="form-group">
-                        <label for="passengers_input">Numero di Passeggeri:</label>
-                        <input type="number" id="passengers_input" name="passengers" required>
+                        <label for="costo">Costo Unitario Viaggio:</label>
+                        <input type="number" id="costo" name="costo" required>$
                     </div>
                     <button style="float: right;" type="button" class="next-button">Avanti</button>
                 </div>
