@@ -35,6 +35,10 @@
                     <div class="slide active" id="slide1">
                         <h2>Registrazione del Viaggio - Informazioni di Viaggio</h2>
                         <div class="form-group">
+                            <label for="city_input">Inserisci link Immagine:</label>
+                            <input type="text" id="city_input" name="city" required>
+                        </div>
+                        <div class="form-group">
                             <label for="departure_city_input">Città di Partenza:</label>
                             <input type="text" id="departure_city_input" name="departure_city" required>
                         </div>

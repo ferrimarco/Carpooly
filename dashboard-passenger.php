@@ -22,7 +22,7 @@
                 </div>
                 <div class="nav-links">
                     <a href="search-ride.html"><i class="fas fa-magnifying-glass"></i> Cerca</a>
-                    <a href="offer-ride.html"><i class="fas fa-hand-holding-heart"></i> Offri un passaggio</a>
+                    <a href="dashboard-autisti.php"><i class="fas fa-hand-holding-heart"></i> Offri un passaggio</a>
                     <div class="folder-user">
                     <?php if (isset($_GET['name'])): ?>
                         <i style="margin-right: 10px;" class="fas fa-user"></i>

@@ -492,6 +492,7 @@ button{
 }
 
 .card-n1{
+    margin: 20px;
     display: flex;
     align-items: center;
     /*border: 1px solid var(--darkblue);*/
@@ -499,6 +500,8 @@ button{
     width: 1200px;
     height: 300px;
     position: relative;
+    border-bottom: 1px solid var(--darkblue);
+    box-shadow: -2px 1px 8px 6px var(--darkblue);
 }
 
 .content-description-travel{

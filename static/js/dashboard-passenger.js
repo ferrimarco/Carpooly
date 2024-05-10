@@ -149,7 +149,7 @@ document.addEventListener("DOMContentLoaded", eseguiProgramma);
 function getSelectedDate(selectedDay, currentMonth) {
     var today = new Date();
     var year = today.getFullYear();
-    return selectedDay + '-' + (currentMonth < 10 ? '0' + currentMonth : currentMonth) + '-' + year;
+    return year + '-' + (currentMonth < 10 ? '0' + currentMonth : currentMonth) + '-' + selectedDay;
 }
 
 function updateSelectedDate(selectedDate) {

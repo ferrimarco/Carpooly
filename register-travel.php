@@ -6,6 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Recupera l'ID dell'autista dalla sessione
     $id_autista = $_SESSION['id_autista'];
 
+    $image = $_POST["city"];
     $partenza = $_POST["departure_city"];
     $destinazione = $_POST["destination_city"];
     $data = $_POST["travel_date"];
@@ -17,8 +18,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nPostiTotali = $_POST["total_seats"];
     $nPostiDisponibili = $_POST["available_seats"];
 
-    $sql = "INSERT INTO viaggi (id_autista, partenza, destinazione, data_viaggio, costo_viaggio, modello, targa, colore, anno, nPostitotale, nPostiDisponibili)
-            VALUES ('$id_autista', '$partenza', '$destinazione', '$data', '$costo', '$modello', '$targa', '$colore', '$anno', '$nPostiTotali', '$nPostiDisponibili')";
+    $sql = "INSERT INTO viaggi (id_autista, Image, partenza, destinazione, data_viaggio, costo_viaggio, modello, targa, colore, anno, nPostitotale, nPostiDisponibili)
+            VALUES ('$id_autista', '$image', '$partenza', '$destinazione', '$data', '$costo', '$modello', '$targa', '$colore', '$anno', '$nPostiTotali', '$nPostiDisponibili')";
 
     if ($conn->query($sql) === TRUE) {
         echo "<script>alert('Il viaggio è stato pubblicato con successo!')</script>";
