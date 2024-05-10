@@ -1004,50 +1004,61 @@
                     </div>
                     <div class="content-description-travel">
                         <?php
-                            $sql = "SELECT * FROM viaggi WHERE partenza = 'Bari' AND destinazione = 'Roma' ";
-                            $result = $conn->query($sql);
-                        
-                            if ($result->num_rows > 0) {
-                                $row = $result->fetch_assoc();
-                            }
+                        $sql = "SELECT * FROM viaggi WHERE partenza = 'Bari' AND destinazione = 'Roma'";
+                        $result = $conn->query($sql);
+
+                        if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                // Inizializza la variabile $id_viaggio con l'ID del viaggio corrente
+                                $id_viaggio = $row['id'];
                         ?>
-                        <div class="travel-travel">
-                            <div class="partenza">
-                                <i class="fa-solid fa-plane-departure"></i>
-                                <h3>Partenza: <?php echo $row['partenza']; ?></h3>
-                            </div>
-                            <div class="destinazione">
-                                 <i class="fa-solid fa-plane-arrival"></i>
-                                 <h3>Destinazione: <?php echo $row['destinazione']; ?></h3>
-                            </div>
-                            <div class="data">
-                                <i class="fa-solid fa-calendar-days"></i>
-                                <h3>Data: <?php echo $row['data_viaggio']; ?></h3>
-                            </div>
-                            <div class="costo">
-                                <i class="fa-solid fa-sack-dollar"></i>
-                                <h3>Costo: <?php echo $row['costo_viaggio']; ?>€</h3>
-                            </div>
-                        </div>
-                        <div class="car-travel">
-                            <div class="car">
-                                 <i class="fa-solid fa-car-side"></i>
-                                 <h3>Macchina: <?php echo $row['modello']; ?></h3>
-                            </div>
-                            <div class="car-color">
-                                <i class="fa-solid fa-palette"></i>
-                                <h3>Colore Macchina: <?php echo $row['colore']; ?></h3>
-                            </div>
-                            <div class="PostiAuto">
-                                <i class="fa-solid fa-person"></i>
-                                <h3>Posti Auto: <?php echo $row['nPostitotale']; ?></h3>
-                            </div>
-                            <div class="PostiAutoDisponibili">
-                                <i class="fa-solid fa-person"></i>
-                                <h3>Posti Auto Disponibli: <?php echo $row['nPostiDisponibili']; ?></h3>
-                            </div>
-                        </div>
-                        <button id="btn-p" type="submit">Prenota</button>
+                                <div class="travel-travel">
+                                    <div class="partenza">
+                                        <i class="fa-solid fa-plane-departure"></i>
+                                        <h3>Partenza: <?php echo $row['partenza']; ?></h3>
+                                    </div>
+                                    <div class="destinazione">
+                                        <i class="fa-solid fa-plane-arrival"></i>
+                                        <h3>Destinazione: <?php echo $row['destinazione']; ?></h3>
+                                    </div>
+                                    <div class="data">
+                                        <i class="fa-solid fa-calendar-days"></i>
+                                        <h3>Data: <?php echo $row['data_viaggio']; ?></h3>
+                                    </div>
+                                    <div class="costo">
+                                        <i class="fa-solid fa-sack-dollar"></i>
+                                        <h3>Costo: <?php echo $row['costo_viaggio']; ?>€</h3>
+                                    </div>
+                                </div>
+                                <div class="car-travel">
+                                    <div class="car">
+                                        <i class="fa-solid fa-car-side"></i>
+                                        <h3>Macchina: <?php echo $row['modello']; ?></h3>
+                                    </div>
+                                    <div class="car-color">
+                                        <i class="fa-solid fa-palette"></i>
+                                        <h3>Colore Macchina: <?php echo $row['colore']; ?></h3>
+                                    </div>
+                                    <div class="PostiAuto">
+                                        <i class="fa-solid fa-person"></i>
+                                        <h3>Posti Auto: <?php echo $row['nPostitotale']; ?></h3>
+                                    </div>
+                                    <div class="PostiAutoDisponibili">
+                                        <i class="fa-solid fa-person"></i>
+                                        <h3>Posti Auto Disponibli: <?php echo $row['nPostiDisponibili']; ?></h3>
+                                    </div>
+                                </div>
+                        <?php
+                            }
+                        } else {
+                            echo "Nessun viaggio trovato.";
+                        }
+                        ?>
+                        <form action="prenotazione.php" method="post">
+                            <!-- Assicurati che $id_viaggio sia definito -->
+                            <input type="hidden" name="id_viaggio" value="<?php echo $id_viaggio; ?>">
+                            <button id="btn-p" type="submit">Prenota</button>
+                        </form>
                     </div>
                 </div>
 
@@ -1057,51 +1068,62 @@
                     </div>
                     <div class="content-description-travel">
                         <?php
-                            $sql = "SELECT * FROM viaggi WHERE partenza = 'Bari' AND destinazione = 'Napoli' ";
-                            $result = $conn->query($sql);
-                        
-                            if ($result->num_rows > 0) {
-                                $row = $result->fetch_assoc();
-                            }
+                        $sql = "SELECT * FROM viaggi WHERE partenza = 'Bari' AND destinazione = 'Napoli'";
+                        $result = $conn->query($sql);
+
+                        if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                // Inizializza la variabile $id_viaggio con l'ID del viaggio corrente
+                                $id_viaggio = $row['id'];
                         ?>
-                        <div class="travel-travel">
-                            <div class="partenza">
-                                <i class="fa-solid fa-plane-departure"></i>
-                                <h3>Partenza: <?php echo $row['partenza']; ?></h3>
-                            </div>
-                            <div class="destinazione">
-                                 <i class="fa-solid fa-plane-arrival"></i>
-                                 <h3>Destinazione: <?php echo $row['destinazione']; ?></h3>
-                            </div>
-                            <div class="data">
-                                <i class="fa-solid fa-calendar-days"></i>
-                                <h3>Data: <?php echo $row['data_viaggio']; ?></h3>
-                            </div>
-                            <div class="costo">
-                                <i class="fa-solid fa-sack-dollar"></i>
-                                <h3>Costo: <?php echo $row['costo_viaggio']; ?>€</h3>
-                            </div>
-                        </div>
-                        <div class="car-travel">
-                            <div class="car">
-                                 <i class="fa-solid fa-car-side"></i>
-                                 <h3>Macchina: <?php echo $row['modello']; ?></h3>
-                            </div>
-                            <div class="car-color">
-                                <i class="fa-solid fa-palette"></i>
-                                <h3>Colore Macchina: <?php echo $row['colore']; ?></h3>
-                            </div>
-                            <div class="PostiAuto">
-                                <i class="fa-solid fa-person"></i>
-                                <h3>Posti Auto: <?php echo $row['nPostitotale']; ?></h3>
-                            </div>
-                            <div class="PostiAutoDisponibili">
-                                <i class="fa-solid fa-person"></i>
-                                <h3>Posti Auto Disponibli: <?php echo $row['nPostiDisponibili']; ?></h3>
-                            </div>
-                        </div>
+                                <div class="travel-travel">
+                                    <div class="partenza">
+                                        <i class="fa-solid fa-plane-departure"></i>
+                                        <h3>Partenza: <?php echo $row['partenza']; ?></h3>
+                                    </div>
+                                    <div class="destinazione">
+                                        <i class="fa-solid fa-plane-arrival"></i>
+                                        <h3>Destinazione: <?php echo $row['destinazione']; ?></h3>
+                                    </div>
+                                    <div class="data">
+                                        <i class="fa-solid fa-calendar-days"></i>
+                                        <h3>Data: <?php echo $row['data_viaggio']; ?></h3>
+                                    </div>
+                                    <div class="costo">
+                                        <i class="fa-solid fa-sack-dollar"></i>
+                                        <h3>Costo: <?php echo $row['costo_viaggio']; ?>€</h3>
+                                    </div>
+                                </div>
+                                <div class="car-travel">
+                                    <div class="car">
+                                        <i class="fa-solid fa-car-side"></i>
+                                        <h3>Macchina: <?php echo $row['modello']; ?></h3>
+                                    </div>
+                                    <div class="car-color">
+                                        <i class="fa-solid fa-palette"></i>
+                                        <h3>Colore Macchina: <?php echo $row['colore']; ?></h3>
+                                    </div>
+                                    <div class="PostiAuto">
+                                        <i class="fa-solid fa-person"></i>
+                                        <h3>Posti Auto: <?php echo $row['nPostitotale']; ?></h3>
+                                    </div>
+                                    <div class="PostiAutoDisponibili">
+                                        <i class="fa-solid fa-person"></i>
+                                        <h3>Posti Auto Disponibli: <?php echo $row['nPostiDisponibili']; ?></h3>
+                                    </div>
+                                </div>
+                        <?php
+                            }
+                        } else {
+                            echo "Nessun viaggio trovato.";
+                        }
+                        ?>
+                        <form action="prenotazione.php" method="post">
+                            <!-- Assicurati che $id_viaggio sia definito -->
+                            <input type="hidden" name="id_viaggio" value="<?php echo $id_viaggio; ?>">
+                            <button id="btn-p" type="submit">Prenota</button>
+                        </form>
                     </div>
-                    <button id="btn-p" type="submit">Prenota</button>
                 </div>
 
                 <div class="card-n1">
@@ -1109,54 +1131,64 @@
                         <img src="data:image/jpeg;base64,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" alt="">
                     </div>
                     <div class="content-description-travel">
-                    <?php
-                        $sql = "SELECT * FROM viaggi WHERE partenza = 'Bari' AND destinazione = 'Milano' ";
-                        $result = $conn->query($sql);
-                        
-                        if ($result->num_rows > 0) {
-                            $row = $result->fetch_assoc();
-                         }
-                    ?>
-                    <div class="travel-travel">
-                            <div class="partenza">
-                                <i class="fa-solid fa-plane-departure"></i>
-                                <h3>Partenza: <?php echo $row['partenza']; ?></h3>
-                            </div>
-                            <div class="destinazione">
-                                 <i class="fa-solid fa-plane-arrival"></i>
-                                 <h3>Destinazione: <?php echo $row['destinazione']; ?></h3>
-                            </div>
-                            <div class="data">
-                                <i class="fa-solid fa-calendar-days"></i>
-                                <h3>Data: <?php echo $row['data_viaggio']; ?></h3>
-                            </div>
-                            <div class="costo">
-                                <i class="fa-solid fa-sack-dollar"></i>
-                                <h3>Costo: <?php echo $row['costo_viaggio']; ?>€</h3>
-                            </div>
-                        </div>
-                        <div class="car-travel">
-                            <div class="car">
-                                 <i class="fa-solid fa-car-side"></i>
-                                 <h3>Macchina: <?php echo $row['modello']; ?></h3>
-                            </div>
-                            <div class="car-color">
-                                <i class="fa-solid fa-palette"></i>
-                                <h3>Colore Macchina: <?php echo $row['colore']; ?></h3>
-                            </div>
-                            <div class="PostiAuto">
-                                <i class="fa-solid fa-person"></i>
-                                <h3>Posti Auto: <?php echo $row['nPostitotale']; ?></h3>
-                            </div>
-                            <div class="PostiAutoDisponibili">
-                                <i class="fa-solid fa-person"></i>
-                                <h3>Posti Auto Disponibli: <?php echo $row['nPostiDisponibili']; ?></h3>
-                            </div>
-                        </div>
+                        <?php
+                            $sql = "SELECT * FROM viaggi WHERE partenza = 'Bari' AND destinazione = 'Milano'";
+                            $result = $conn->query($sql);
+
+                            if ($result->num_rows > 0) {
+                                while ($row = $result->fetch_assoc()) {
+                                    // Inizializza la variabile $id_viaggio con l'ID del viaggio corrente
+                                    $id_viaggio = $row['id'];
+                        ?>
+                                <div class="travel-travel">
+                                    <div class="partenza">
+                                        <i class="fa-solid fa-plane-departure"></i>
+                                        <h3>Partenza: <?php echo $row['partenza']; ?></h3>
+                                    </div>
+                                    <div class="destinazione">
+                                        <i class="fa-solid fa-plane-arrival"></i>
+                                        <h3>Destinazione: <?php echo $row['destinazione']; ?></h3>
+                                    </div>
+                                    <div class="data">
+                                        <i class="fa-solid fa-calendar-days"></i>
+                                        <h3>Data: <?php echo $row['data_viaggio']; ?></h3>
+                                    </div>
+                                    <div class="costo">
+                                        <i class="fa-solid fa-sack-dollar"></i>
+                                        <h3>Costo: <?php echo $row['costo_viaggio']; ?>€</h3>
+                                    </div>
+                                </div>
+                                <div class="car-travel">
+                                    <div class="car">
+                                        <i class="fa-solid fa-car-side"></i>
+                                        <h3>Macchina: <?php echo $row['modello']; ?></h3>
+                                    </div>
+                                    <div class="car-color">
+                                        <i class="fa-solid fa-palette"></i>
+                                        <h3>Colore Macchina: <?php echo $row['colore']; ?></h3>
+                                    </div>
+                                    <div class="PostiAuto">
+                                        <i class="fa-solid fa-person"></i>
+                                        <h3>Posti Auto: <?php echo $row['nPostitotale']; ?></h3>
+                                    </div>
+                                    <div class="PostiAutoDisponibili">
+                                        <i class="fa-solid fa-person"></i>
+                                        <h3>Posti Auto Disponibili: <?php echo $row['nPostiDisponibili']; ?></h3>
+                                    </div>
+                                </div>
+                        <?php
+                            }
+                        } else {
+                            echo "Nessun viaggio trovato.";
+                        }
+                        ?>
+                        <form action="prenotazione.php" method="post">
+                            <!-- Assicurati che $id_viaggio sia definito -->
+                            <input type="hidden" name="id_viaggio" value="<?php echo $id_viaggio; ?>">
+                            <button id="btn-p" type="submit">Prenota</button>
+                        </form>
                     </div>
-                    <button id="btn-p" type="submit">Prenota</button>
                 </div>
-                
             </div>
          </div>
     </main>

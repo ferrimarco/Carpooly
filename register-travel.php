@@ -22,6 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             VALUES ('$id_autista', '$image', '$partenza', '$destinazione', '$data', '$costo', '$modello', '$targa', '$colore', '$anno', '$nPostiTotali', '$nPostiDisponibili')";
 
     if ($conn->query($sql) === TRUE) {
+        $id_viaggio = $conn->insert_id;
         echo "<script>alert('Il viaggio è stato pubblicato con successo!')</script>";
         header("Location: dashboard-passenger.php");
         exit;

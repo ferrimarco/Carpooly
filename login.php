@@ -13,17 +13,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Imposta l'email nella sessione
         $_SESSION['email'] = $email;
         
-        // Ottieni il nome dell'utente
-        $getNameQuery = "SELECT name FROM users WHERE email='$email'";
-        $resultName = $conn->query($getNameQuery);
+        // Ottieni l'ID e il nome dell'utente
+        $getUserQuery = "SELECT id, name FROM users WHERE email='$email'";
+        $resultUser = $conn->query($getUserQuery);
 
-        if ($resultName->num_rows == 1) {
-            $row = $resultName->fetch_assoc();
+        if ($resultUser->num_rows == 1) {
+            $row = $resultUser->fetch_assoc();
+            $id_utente = $row['id'];
             $userName = $row['name'];
         
-            echo "Nome utente: $userName";
-            // Redirect alla dashboard del passeggero con il nome utente corretto
-            header("Location: dashboard-passenger.php?name=$userName");
+            $_SESSION['id_utente'] = $id_utente;
+            header("Location: dashboard-passenger.php?name=$userName&id=$id_utente");
             exit;
         } else {
             echo "<script>alert('Errore nel recupero del nome utente');</script>";

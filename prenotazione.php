@@ -2,33 +2,33 @@
 session_start();
 include './db.php';
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Controlla se l'utente ha effettuato l'accesso
-    if(isset($_SESSION['id_utente'])) {
-        // Recupera l'ID dell'utente dalla sessione
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['id_viaggio'])) {
+    $id_viaggio = $_POST['id_viaggio'];
+    
+    if (!isset($_SESSION['id_utente'])) {
+        exit("Devi effettuare l'accesso per poter prenotare un viaggio.");
+    } else {
         $id_utente = $_SESSION['id_utente'];
 
-        // Query per ottenere l'ID del viaggio in base all'utente
-        $query_viaggio = "SELECT id_viaggio FROM prenotazioni WHERE id_utente = '$id_utente'";
-        $result_viaggio = $conn->query($query_viaggio);
+        $check_sql = "SELECT * FROM viaggi WHERE id = '$id_viaggio'";
+        $check_result = $conn->query($check_sql);
 
-        if ($result_viaggio->num_rows > 0) {
-            $row_viaggio = $result_viaggio->fetch_assoc();
-            $id_viaggio = $row_viaggio['id_viaggio'];
-
-            // Inserisci l'ID del viaggio e l'ID dell'utente nella tabella delle prenotazioni
-            $sql = "INSERT INTO prenotazioni (id_viaggio, id_utente) VALUES ('$id_viaggio','$id_utente')";
+        if ($check_result && $check_result->num_rows > 0) {
+            $sql = "INSERT INTO prenotazioni (id_viaggio, id_utente) VALUES ('$id_viaggio', '$id_utente')";
+            
             if ($conn->query($sql) === TRUE) {
-                echo "<script>alert('La tua prenotazione è stata pubblicata con successo!')</script>";
+                echo "<script>alert('La tua prenotazione e` stata pubblicata con successo!')</script>";
+                header("Location: dashboard-passenger.php");
                 exit;
             } else {
                 echo "Errore durante la prenotazione: " . $conn->error;
             }
+            
         } else {
-            echo "Nessun viaggio trovato per questo utente.";
+            exit("Errore: Il viaggio specificato non esiste.");
         }
-    } else {
-        echo "Devi effettuare l'accesso prima di prenotare un viaggio.";
     }
+} else {
+    exit("Errore: I valori di partenza e destinazione non sono stati inviati correttamente.");
 }
 ?>

@@ -1,12 +1,21 @@
 <?php
+session_start();
+include './db.php';
 
-    include './db.php';
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $partenza = $_POST['departure'];
-        $destinazione = $_POST['destination'];
-        $data_viaggio = $_POST['date'];
-        $passenger = $_POST['passenger'];
-    }
+// Inizializza una variabile per l'ID del viaggio
+$id_viaggio = null;
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $partenza = $_POST['departure'];
+    $destinazione = $_POST['destination'];
+    $data_viaggio = $_POST['date'];
+    $passenger = $_POST['passenger'];
+}
+
+if (!isset($_SESSION['id_utente'])) {
+    exit("Devi effettuare l'accesso per poter prenotare un viaggio.");
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -25,7 +34,7 @@
                     <img src="./static/img/img/images.png" alt="BlaBlaCar Logo" width="145" height="87">
                 </div>
                 <div class="title">
-                    <h1>Ricera Viaggio</h1>
+                    <h1>Ricerca Viaggio</h1> <!-- Corretto il typo -->
                 </div>
                 <div>
                     <h1>&nbsp;</h1>
@@ -33,7 +42,7 @@
             </div>
         </nav>
     </header>
-    <main class="container travel-raccomendation">
+    <main class="container travel-recommendation"> <!-- Corretto il typo -->
         <div class="content-travel">
             <div class="main-title">
                 <h1>Ecco a te i risultati della tua ricerca</h1>
@@ -83,20 +92,21 @@
                             echo "<i class='fa-solid fa-person'></i>";
                             echo "<h3>Posti Auto Disponibli: " . $row['nPostiDisponibili'] . "</h3>";
                             echo "</div>";
-
-
+                            // Memorizza l'ID del viaggio
+                            $id_viaggio = $row['id'];
                         }
                     } else {
                         echo "Nessun viaggio trovato.";
                     }
                 ?>
-                       <form action="prenotazione.php" method="post">
+                    <!-- Includi il campo nascosto per l'ID del viaggio nel form -->
+                    <form action="prenotazione.php" method="post">
+                        <input type="hidden" name="id_viaggio" value="<?php echo $id_viaggio; ?>">
                         <button id="btn-p" type="submit">Prenota</button>
-                       </form>
-                    </div>
+                    </form>
                 </div>
             </div>
-         </div>
+        </div>
     </main>
 
     <script src="https://kit.fontawesome.com/af6ecfa2ff.js" crossorigin="anonymous"></script>

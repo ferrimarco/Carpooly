@@ -1,4 +1,5 @@
 <?php
+session_start();
 include_once 'db.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -26,6 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $sql = "INSERT INTO users (email, password, name, surname, birthdate, gender) VALUES ('$email', '$password', '$name', '$surname', '$birthdate', '$gender')";
 
         if ($conn->query($sql) === TRUE) {
+            $id_utente = $conn->insert_id;
             echo "<script>alert('Registrazione avvenuta con successo');</script>";
             echo "<script> window.location.href = 'index.html'; </script>";
             exit;
