@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Skill Up™ - Il Tuo Portale di Formazione</title>
-    <link rel="stylesheet" href="./css/style.css">
+    <title>Skill-Up™ - Area Riservata</title>
+    <link rel="stylesheet" href="./css/reserved-area.css">
     <link rel="icon" href="./image/icon.webp">
     <script src="https://kit.fontawesome.com/4b5158fde0.js" crossorigin="anonymous"></script>
 </head>
@@ -38,10 +38,6 @@
                         </a>
                     </div>
                 </div>
-               
-                <div class="hamburger">
-                    <i class="fa-solid fa-bars"></i>
-                </div>
             </div>
         </nav>
     </header>
@@ -49,16 +45,26 @@
     <main>
         <section class="hero">
             <div class="hero-content">
-                <h2>Benvenuto su Skill Up</h2>
-                <p>Scopri i corsi e le competenze che ti aiuteranno a crescere professionalmente.</p>
-                <a href="login.html" class="cta-button">Scopri i Corsi</a>
-            </div>
-            <div class="hero-image">
-                <img src="./image/hero.jpeg" alt="Immagine Hero">
+                <h2>Accedi come amministratore a Skill-Up!</h2>
             </div>
         </section>
+        <section class="registration-form">
+            <form action="./php/reserved-access.php" method="post">
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="Inserisci la tua email..." required>
+                </div>
+        
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" placeholder="Inserisci la tua password..." required>
+                </div>
+        
+                <button type="submit" class="submit-btn">Accedi</button>
+            </form>
+        </section>
     </main>
-    
+
     <footer>
         <div class="footer-content">
             <p>© 2024 Skill Up™ - Cresci con Noi</p>
@@ -70,7 +76,5 @@
             </div>
         </div>
     </footer>
-
-    <script src="./js/script.js"></script>
 </body>
 </html>
